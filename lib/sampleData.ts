@@ -56,6 +56,26 @@ export interface PaymentActivity {
   timestamp: string;
 }
 
+export interface Farmer {
+  id: string;
+  name: string;
+  phone: string;
+  address: string;
+  village: string;
+  registrationDate: string;
+  status: 'Active' | 'Inactive';
+  totalMilkSupplied: number; // in liters
+  paymentStatus: 'Paid' | 'Pending';
+  pendingAmount?: number; // in INR
+  cattleDetails?: string;
+  avatarUrl?: string;
+  bankDetails?: {
+    bankName: string;
+    accountLastFour: string;
+    ifsc: string;
+  };
+}
+
 export interface DailyCollectionTrend {
   day: string;
   fullDate: string;
@@ -66,7 +86,7 @@ export interface DailyCollectionTrend {
 
 export const NAVIGATION_ITEMS: NavItem[] = [
   { id: 'dashboard', label: 'Dashboard', icon: 'dashboard', href: '/', category: 'core' },
-  { id: 'farmers', label: 'Farmers', icon: 'groups', href: '#farmers', badge: '482', category: 'core' },
+  { id: 'farmers', label: 'Farmers', icon: 'groups', href: '/farmers', badge: '482', category: 'core' },
   { id: 'milk-collection', label: 'Milk Collection', icon: 'water_drop', href: '#milk-collection', badge: 'LIVE', category: 'operations' },
   { id: 'milk-quality', label: 'Milk Quality', icon: 'biotech', href: '#milk-quality', category: 'operations' },
   { id: 'payments', label: 'Payments', icon: 'payments', href: '#payments', badge: 'Due', category: 'operations' },
@@ -356,3 +376,210 @@ export const REVENUE_BREAKDOWN = {
     { name: 'Cash Counter Settlement', percent: 8, amount: '₹11,860.80', color: 'bg-amber-500' },
   ],
 };
+
+export const INITIAL_FARMERS: Farmer[] = [
+  {
+    id: 'F-104',
+    name: 'Ramesh Patel',
+    phone: '+91 98251 44102',
+    address: 'Plot 14, Near Gaushala, Anandpur North',
+    village: 'Anandpur North',
+    registrationDate: '2021-01-12',
+    status: 'Active',
+    totalMilkSupplied: 14250.5,
+    paymentStatus: 'Pending',
+    pendingAmount: 18920.0,
+    cattleDetails: '6 Buffaloes, 2 Cows',
+    avatarUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBRVQR2H-GGerm-8izaLVjzbf7V1P8tqzqCr6qQ6L6EXW8UlCC3mqEJ9IfKGuFZWlCrbHq_UVFsULDQm8_lViHegJKwr4G442dEOPEruV0GIC-5OjQHHw8vTETD8x3D-tHYulR9ey7z1f15fU18HlTsApjXzPrxCR7ixhPUXxKVRUCS18gN11Lky0Gy6-jRJ2iJk1TI6hXSq-sZKrCycSZKDstCnjn1HrcjAEycXd6bf9i2GFmCNPw3Nw',
+    bankDetails: {
+      bankName: 'State Bank of India',
+      accountLastFour: '8842',
+      ifsc: 'SBIN0001245',
+    },
+  },
+  {
+    id: 'F-089',
+    name: 'Sunita Devi',
+    phone: '+91 94230 77198',
+    address: 'House #42, Main Chawk, Navapura',
+    village: 'Navapura',
+    registrationDate: '2021-03-05',
+    status: 'Active',
+    totalMilkSupplied: 11840.0,
+    paymentStatus: 'Paid',
+    pendingAmount: 0,
+    cattleDetails: '4 Cows',
+    avatarUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAlrlyW-Yu4iw5EkmqCTzExcspJYvJSj3BK5zM-UdUnxW2pT9WJrmTkCJlFX_s--LYHjkJrI8UKW4VrerA8CpUlBqchqCd6TW4tPVz-VakYhf2a9YihJ_g52IebmWpVOlXdNfZ_N4WI0nUCfXltqI2QQCOdyg24tfwxbyAOUJlQVZZxM6aukxYfxhrVel6TDndvssyKmyLQShJYBiNZSyFLYwiudsrzS169alBlyy4vY_Z5jMuvVhuUpQ',
+    bankDetails: {
+      bankName: 'Bank of Baroda',
+      accountLastFour: '3109',
+      ifsc: 'BARB0NAVAPU',
+    },
+  },
+  {
+    id: 'F-212',
+    name: 'Vikram Singh',
+    phone: '+91 98912 33451',
+    address: 'Shri Krishna Farm, Kheda Khurd',
+    village: 'Kheda Khurd',
+    registrationDate: '2021-11-19',
+    status: 'Active',
+    totalMilkSupplied: 19420.0,
+    paymentStatus: 'Pending',
+    pendingAmount: 12450.0,
+    cattleDetails: '8 Buffaloes, 3 Cows',
+    avatarUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCu4dpqjFzsR3KWw2NsJZkIAz1fTjhCmOnvTDLNpEM4wtHTmiL5TXDj9Tu6L_9Lro07tP5p5kPq23PTL7kE-sbpBdLjXY7nOd67jOOg2GZkb56h-_iDwFPHjRFOCDXUQfPxjqLQXaQWunyVOxvhdNLSdrALj5sfoC9xwTbes0Smqm8bFvV6Eol2-zeZm8_yZSTEudoyEdbrAlBF4wRSao7dgzNxVUvuMH_WAe93UY_P6YTmdN-KK970Yg',
+    bankDetails: {
+      bankName: 'HDFC Bank',
+      accountLastFour: '9021',
+      ifsc: 'HDFC0004921',
+    },
+  },
+  {
+    id: 'F-305',
+    name: 'Meena Choudhary',
+    phone: '+91 97123 45678',
+    address: 'Behind Panchayat Hall, Navapura',
+    village: 'Navapura',
+    registrationDate: '2022-02-14',
+    status: 'Active',
+    totalMilkSupplied: 8920.0,
+    paymentStatus: 'Paid',
+    pendingAmount: 0,
+    cattleDetails: '3 Cows, 1 Buffalo',
+    avatarUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&auto=format&fit=crop&q=80',
+    bankDetails: {
+      bankName: 'Punjab National Bank',
+      accountLastFour: '5512',
+      ifsc: 'PUNB0182700',
+    },
+  },
+  {
+    id: 'F-078',
+    name: 'Suresh Jadhav',
+    phone: '+91 98221 66543',
+    address: 'Post Office Lane, Kheda Khurd',
+    village: 'Kheda Khurd',
+    registrationDate: '2020-08-28',
+    status: 'Active',
+    totalMilkSupplied: 16300.0,
+    paymentStatus: 'Paid',
+    pendingAmount: 0,
+    cattleDetails: '5 Cows, 4 Buffaloes',
+    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80',
+    bankDetails: {
+      bankName: 'Canara Bank',
+      accountLastFour: '4471',
+      ifsc: 'CNRB0002819',
+    },
+  },
+  {
+    id: 'F-144',
+    name: 'Anita Deshmukh',
+    phone: '+91 94032 11987',
+    address: 'Near Water Tower, Ambika Puram',
+    village: 'Ambika Puram',
+    registrationDate: '2022-06-10',
+    status: 'Active',
+    totalMilkSupplied: 7450.0,
+    paymentStatus: 'Pending',
+    pendingAmount: 7080.0,
+    cattleDetails: '4 Buffaloes',
+    avatarUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&auto=format&fit=crop&q=80',
+    bankDetails: {
+      bankName: 'State Bank of India',
+      accountLastFour: '7190',
+      ifsc: 'SBIN0004912',
+    },
+  },
+  {
+    id: 'F-044',
+    name: 'Kailash Meena',
+    phone: '+91 96112 88421',
+    address: 'Kailash Dairy Farm, Anandpur South',
+    village: 'Anandpur South',
+    registrationDate: '2020-01-15',
+    status: 'Active',
+    totalMilkSupplied: 22100.0,
+    paymentStatus: 'Paid',
+    pendingAmount: 0,
+    cattleDetails: '9 Buffaloes, 4 Cows',
+    bankDetails: {
+      bankName: 'Bank of India',
+      accountLastFour: '6631',
+      ifsc: 'BKID0001004',
+    },
+  },
+  {
+    id: 'F-176',
+    name: 'Harish Verma',
+    phone: '+91 99870 90214',
+    address: 'Cluster 3, Gokul Dairy Cooperative',
+    village: 'Gokul Cluster',
+    registrationDate: '2022-09-03',
+    status: 'Active',
+    totalMilkSupplied: 6890.0,
+    paymentStatus: 'Paid',
+    pendingAmount: 0,
+    cattleDetails: '3 Cows',
+    bankDetails: {
+      bankName: 'Axis Bank',
+      accountLastFour: '1288',
+      ifsc: 'UTIB0002190',
+    },
+  },
+  {
+    id: 'F-132',
+    name: 'Pooja Sharma',
+    phone: '+91 98765 43210',
+    address: 'Near Dairy Chilling Unit, Gokul Cluster',
+    village: 'Gokul Cluster',
+    registrationDate: '2021-12-22',
+    status: 'Active',
+    totalMilkSupplied: 9340.0,
+    paymentStatus: 'Paid',
+    pendingAmount: 0,
+    cattleDetails: '2 Buffaloes, 3 Cows',
+    bankDetails: {
+      bankName: 'ICICI Bank',
+      accountLastFour: '9902',
+      ifsc: 'ICIC0000842',
+    },
+  },
+  {
+    id: 'F-380',
+    name: 'Dinesh Solanki',
+    phone: '+91 93120 44556',
+    address: 'Ambika Puram West',
+    village: 'Ambika Puram',
+    registrationDate: '2023-05-18',
+    status: 'Inactive',
+    totalMilkSupplied: 3120.0,
+    paymentStatus: 'Paid',
+    pendingAmount: 0,
+    cattleDetails: 'Livestock temporarily relocated',
+    bankDetails: {
+      bankName: 'State Bank of India',
+      accountLastFour: '4112',
+      ifsc: 'SBIN0003810',
+    },
+  },
+  {
+    id: 'F-415',
+    name: 'Baldev Bhai Rabari',
+    phone: '+91 98980 12345',
+    address: 'Rabari Vaas, Anandpur North',
+    village: 'Anandpur North',
+    registrationDate: '2023-11-11',
+    status: 'Inactive',
+    totalMilkSupplied: 1850.0,
+    paymentStatus: 'Pending',
+    pendingAmount: 3200.0,
+    cattleDetails: 'Under veterinary dry cycle',
+    bankDetails: {
+      bankName: 'Bank of Baroda',
+      accountLastFour: '7721',
+      ifsc: 'BARB0ANANDP',
+    },
+  },
+];
